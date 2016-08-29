@@ -8,11 +8,16 @@ $(document).ready(function() {
     return false;
   });
 
-  // listent to 'user in' event. Once the event is emitted, it will display message on html
-  socket.on('user in', function(result) {
+  // listent to 'chat history' event. Once the event is emitted, it will display message on html
+  socket.on('chat history', function(result) {
     for (i = 0; i < result.length; i++) {
       showMsg(result[i].msg);
     }
+  });
+
+  // listent to 'user online' event. Once the event is emitted, it will display message on html
+  socket.on('user online', function(msg){
+    $('#messages').append($('<li class="list-group-item list-group-item-success">').text(msg));
   });
 
   // listent to 'chat message' event. Once the event is emitted, it will display message on html
@@ -20,9 +25,9 @@ $(document).ready(function() {
     showMsg(msg);
   });
 
-  // listent to 'user out' event. Once the event is emitted, it will display message on html
-  socket.on('user out', function(msg){
-    showMsg(msg);
+  // listent to 'user offline' event. Once the event is emitted, it will display message on html
+  socket.on('user offline', function(msg){
+    $('#messages').append($('<li class="list-group-item list-group-item-danger">').text(msg));
   });
 
   function showMsg(msg) {

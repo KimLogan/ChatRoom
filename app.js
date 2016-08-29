@@ -72,12 +72,14 @@ MongoClient.connect(DB_URL, function(err, db) {
   io.on('connection', function(socket) {
     console.log(username + ' connected to server.');
 
+    io.emit('user online', username + ' is online.');
+
     var collection = db.collection('records');
     collection.find().toArray(function(err, result) {
       if (err) {
         console.log('error:' + err);
       } else {
-        socket.emit('user in', result);
+        socket.emit('chat history', result);
       }
     });
 
@@ -101,7 +103,7 @@ MongoClient.connect(DB_URL, function(err, db) {
 
     socket.on('disconnect', function() {
       console.log(namelist[socket.id] + ' offline');
-      io.emit('user out', namelist[socket.id] + 'is offline.');
+      io.emit('user offline', namelist[socket.id] + ' is offline.');
     });
 
   });
