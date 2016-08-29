@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chatroom page">
+    <meta name="author" content="Sheng Luo">
+    <link rel="icon" href="images/chatroom-32px.png">
+
+    <title>Chatroom</title>
+
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      #messages { list-style-type: none; margin: 0; padding: 0; margin-bottom: 80px;}
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+
+    <script type="text/javascript" src="javascripts/socket.io-1.2.0.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="javascripts/chat.js"></script>
+  </head>
+  
+  <body>
+    <ul class="list-group" id="messages"></ul>
+
+    <form action="">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="input-group">
+            <input id="m" type="text" class="form-control" autocomplete="off" placeholder="Please type...">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button">Send</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->
+    </form>
+
+  </body>
+</html>
